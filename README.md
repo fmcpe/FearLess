@@ -3,7 +3,9 @@
 <h3>A private mixin-based injection hacked-client for Minecraft based on NoteLess.</h3>
 </div>
 [![State-of-the-art Shitcode](https://img.shields.io/static/v1?label=State-of-the-art&message=Shitcode&color=7B5804)](https://github.com/trekhleb/state-of-the-art-shitcode)
-[![Who's gonna know about this.?]
+
+[![Who's gonna know about this.?]()
+
 ##HOW TO BUILD
 
 ## Setting up a Workspace
