@@ -1,11 +1,10 @@
-<div align="center">
+<div align="corner">
 <h1>FearLess</h1>
 <h3>A private mixin-based injection hacked-client for Minecraft based on NoteLess.</h3>
 </div>
 
 [![State-of-the-art Shitcode](https://img.shields.io/static/v1?label=State-of-the-art&message=Shitcode&color=7B5804)](https://github.com/trekhleb/state-of-the-art-shitcode)
 ![Minecraft](https://img.shields.io/badge/game-Minecraft-brightgreen)
-![MeMayBeo]
 
 ## Step To Build It
 FearLess uses gradle, so make sure that it is installed properly. Instructions can be found on [Gradle's website](https://gradle.org/install/).
