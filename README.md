@@ -4,11 +4,10 @@
 </div>
 
 [![State-of-the-art Shitcode](https://img.shields.io/static/v1?label=State-of-the-art&message=Shitcode&color=7B5804)](https://github.com/trekhleb/state-of-the-art-shitcode)
-![Minecraft](https://img.shields.io/badge/game-Minecraft-brightgreen) 
+![Minecraft](https://img.shields.io/badge/game-Minecraft-brightgreen)
+![MeMayBeo]()
 
-##HOW TO BUILD
-
-## Setting up a Workspace
+## Step To Build It
 FearLess uses gradle, so make sure that it is installed properly. Instructions can be found on [Gradle's website](https://gradle.org/install/).
 1. Clone the repository using `git clone https://github.com/fmcpe/FearLess.git` (Make sure you have git or Github Desktop installed on your system).
 2. CD into the local repository folder.
