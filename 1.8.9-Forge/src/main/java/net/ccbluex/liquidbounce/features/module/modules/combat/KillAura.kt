@@ -104,15 +104,14 @@ class KillAura : Module() {
     private val boundingBoxModeValue = ListValue("LockLocation", arrayOf("Head","Auto"), "Auto")
     private val rotationSmoothValue = FloatValue("CustomSmooth", 2f, 1f, 10f)
     private val rotationRevValue = BoolValue("RotationReverse", false)
-    private val rotationRevTickValue = IntegerValue("RotationReverseTick", 5, 1, 20)
+    private val rotationRevTickValue = IntegerValue("RotationReverseTick", 5, 1, 20).displayable{rotationRevValue.get()}
     private val keepDirectionValue = BoolValue("KeepDirection", true)
-    private val keepDirectionTickValue = IntegerValue("KeepDirectionTick", 15, 1, 20)
+    private val keepDirectionTickValue = IntegerValue("KeepDirectionTick", 15, 1, 20).displayable{keepDirectionValue.get()}
     private val rotationSmoothModeValue = ListValue("SmoothMode", arrayOf("Custom", "Line", "Quad", "Sine", "QuadSine"), "Custom")
     private val rotationModeValue = ListValue("RotationMode", arrayOf("None","LiquidBounce","ForceCenter","Hypixel","Hypixel2","Exhibition","LockView", "OldMatrix"), "LiquidBounce")
     // Bypass
     private val swingValue = ListValue("Swing", arrayOf("Normal", "Packet", "None"), "Normal")
     private val keepSprintValue = BoolValue("KeepSprint", true)
-    private val killLightningBoltValue = BoolValue("LightningBolt", true)
 
     // AutoBlock
     val autoBlockValue = ListValue("AutoBlock", arrayOf("Range", "Fake","HytPit","Hypixel","RightClick","Off"),"Off")
@@ -136,14 +135,14 @@ class KillAura : Module() {
     private val attackTimingValue = ListValue("AttackTiming", arrayOf("All", "Pre", "Post", "Both"), "All")
     private val blockTimingValue = ListValue("BlockTiming", arrayOf("Pre", "Post", "Both"), "Both")
     // Turn Speed
-    private val maxTurnSpeed: FloatValue = object : FloatValue("MaxTurnSpeed", 180f, 0f, 180f) {
+    private val maxTurnSpeed: FloatValue = object : FloatValue("MaxTurnSpeed", 180f, 0f, 360f) {
         override fun onChanged(oldValue: Float, newValue: Float) {
             val v = minTurnSpeed.get()
             if (v > newValue) set(v)
         }
     }
 
-    private val minTurnSpeed: FloatValue = object : FloatValue("MinTurnSpeed", 180f, 0f, 180f) {
+    private val minTurnSpeed: FloatValue = object : FloatValue("MinTurnSpeed", 180f, 0f, 360f) {
         override fun onChanged(oldValue: Float, newValue: Float) {
             val v = maxTurnSpeed.get()
             if (v < newValue) set(v)
@@ -176,6 +175,8 @@ class KillAura : Module() {
     }
 
     // Bypass
+    private val gcd = BoolValue("RotationsPatch", true)
+    private val gcdvalue = FloatValue("GCDRotaFix", mc.gameSettings.mouseSensitivity / 0.005f, 0.0f, 200f).displayable {gcd.get()}
     private val failRateValue = FloatValue("FailRate", 0f, 0f, 100f)
     private val fakeSwingValue = BoolValue("FakeSwing", true)
     private val noInventoryAttackValue = BoolValue("NoInvAttack", false)
@@ -398,19 +399,15 @@ class KillAura : Module() {
                         || packet is C08PacketPlayerBlockPlacement)
                 && verusAutoBlockValue.get())
             event.cancelEvent()
-
+        if (gcd && packet is C03PacketPlayer && target != null){
+            m = 0.005 * gcdvalue.get();
+            f = m * 0.6 + 0.2;
+            gcdvv = m * m * m * 1.2;
+            packet.pitch -= packet.pitch % gcdvv;
+            packet.yaw -= packet.yaw % gcdvv;
+        }
         if (packet is C09PacketHeldItemChange)
             verusBlocking = false
-        if (killLightningBoltValue.get()) {
-            if (event.packet is C02PacketUseEntity) {
-                if (event.packet.action == C02PacketUseEntity.Action.ATTACK) {
-                    val entity = event.packet.getEntityFromWorld(mc.theWorld)
-                    if (entity is EntityLivingBase) {
-                        targetList[entity] = System.currentTimeMillis() + 3000
-                    }
-                }
-            }
-        }
     }
     /**
      * Update event
@@ -448,18 +445,6 @@ class KillAura : Module() {
         }
         if(target== null && autoBlockValue.get().equals("hytpit")){
             unblock()
-        }
-        if (killLightningBoltValue.get()) {
-            for (entity in targetList) {
-                if (entity.key.isDead || entity.key.health == 0F) {
-                    if(entity.value > System.currentTimeMillis()){
-                        val ent = EntityLightningBolt(mc.theWorld, entity.key.posX, entity.key.posY, entity.key.posZ)
-                        mc.theWorld.addEntityToWorld(-1, ent)
-                        mc.thePlayer.playSound("random.explode", 0.5f, 0.5f )
-                    }
-                    targetList.remove(entity.key)
-                }
-            }
         }
         if (cancelRun) {
             target = null
@@ -900,15 +885,13 @@ class KillAura : Module() {
 
         val calculateSpeed = when (rotationSmoothModeValue.get()) {
             "Custom" -> diffAngle / rotationSmoothValue.get()
-            "Line" -> (diffAngle / 180) * maxTurnSpeed.get() + (1 - diffAngle / 180) * minTurnSpeed.get()
+            "Line" -> (diffAngle / 360) * maxTurnSpeed.get() + (1 - diffAngle / 360) * minTurnSpeed.get()
             //"Quad" -> Math.pow((diffAngle / 180.0), 2.0) * maxTurnSpeedValue.get() + (1 - Math.pow((diffAngle / 180.0), 2.0)) * minTurnSpeedValue.get()
-            "Quad" -> (diffAngle / 180.0).pow(2.0) * maxTurnSpeed.get() + (1 - (diffAngle / 180.0).pow(2.0)) * minTurnSpeed.get()
-            "Sine" -> (-cos(diffAngle / 180 * Math.PI) * 0.5 + 0.5) * maxTurnSpeed.get() + (cos(diffAngle / 180 * Math.PI) * 0.5 + 0.5) * minTurnSpeed.get()
+            "Quad" -> (diffAngle / 360.0).pow(2.0) * maxTurnSpeed.get() + (1 - (diffAngle / 360.0).pow(2.0)) * minTurnSpeed.get()
+            "Sine" -> (-cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5) * maxTurnSpeed.get() + (cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5) * minTurnSpeed.get()
             //"QuadSine" -> Math.pow(-cos(diffAngle / 180 * Math.PI) * 0.5 + 0.5, 2.0) * maxTurnSpeedValue.get() + (1 - Math.pow(-cos(diffAngle / 180 * Math.PI) * 0.5 + 0.5, 2.0)) * minTurnSpeedValue.get()
-            "QuadSine" -> (-cos(diffAngle / 180 * Math.PI) * 0.5 + 0.5).pow(2.0) * maxTurnSpeed.get() + (1 - (-cos(
-                    diffAngle / 180 * Math.PI
-            ) * 0.5 + 0.5).pow(2.0)) * minTurnSpeed.get()
-            else -> 180.0
+            "QuadSine" -> (-cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5).pow(2.0) * maxTurnSpeedValue.get() + (1 - (-cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5).pow(2.0)) * minTurnSpeedValue.get()
+            else -> 360.0
         }
 
         val rotation = when (rotationModeValue.get()) {
