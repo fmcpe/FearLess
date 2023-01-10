@@ -14,4 +14,4 @@ FearLess uses gradle, so make sure that it is installed properly. Instructions c
 4. Open the folder as a Gradle project in your IDE. (Make sure that your IDE is using Java 8, if not then it will have issues)
 5. Select the Forge run configuration.
 ### Troubleshooting Workspace Errors
-If you get a "cannot find forgebin" error, download forge 1.8.9 universal from the forge site and place it in `./FDPClient-main/.gradle/minecraft`
+If you get a "cannot find forgebin" error, download forge 1.8.9 universal from the forge site and place it in `./FearLess/.gradle/minecraft`
