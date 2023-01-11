@@ -21,46 +21,37 @@ import javax.imageio.ImageIO
 object GuiCapeManager : GuiScreen() {
     val jsonFile=File(LiquidBounce.fileManager.capesDir,"cape.json")
 
-    val FDP_CAPE_1=loadCapeFromResource("Noteless Cape 1","assets/minecraft/Insane/cape/cape1.png")
-    val FDP_CAPE_2=loadCapeFromResource("Noteless Cape 2","assets/minecraft/Insane/cape/cape2.png")
-    val FDP_CAPE_3=loadCapeFromResource("Noteless Cape 3","assets/minecraft/Insane/cape/cape3.png")
-    val FDP_CAPE_4=loadCapeFromResource("Noteless Cape 4","assets/minecraft/Insane/cape/cape4.png")
-    val FDP_CAPE_5=loadCapeFromResource("Noteless Cape 5","assets/minecraft/Insane/cape/cape5.png")
-    val FDP_CAPE_6=loadCapeFromResource("Noteless Cape 6","assets/minecraft/Insane/cape/cape6.png")
-    val FDP_CAPE_7=loadCapeFromResource("Noteless Cape 7","assets/minecraft/Insane/cape/cape7.png")
-    val FDP_CAPE_8=loadCapeFromResource("Noteless Cape 8","assets/minecraft/Insane/cape/cape8.png")
-    val FDP_CAPE_9=loadCapeFromResource("Noteless Cape 9","assets/minecraft/Insane/cape/cape9.png")
-    val FDP_CAPE_10=loadCapeFromResource("Noteless Cape 10","assets/minecraft/Insane/cape/cape10.png")
-    var nowCape:Cape?=FDP_CAPE_1
+    val FLess_CAPE_4=loadCapeFromResource("FearLess Cape 4","assets/minecraft/Insane/cape/cape4.png")
+    val FLess_CAPE_5=loadCapeFromResource("FearLess Cape 5","assets/minecraft/Insane/cape/cape5.png")
+    val FLess_CAPE_6=loadCapeFromResource("FearLess Cape 6","assets/minecraft/Insane/cape/cape6.png")
+    val FLess_CAPE_7=loadCapeFromResource("FearLess Cape 7","assets/minecraft/Insane/cape/cape7.png")
+    val FLess_CAPE_8=loadCapeFromResource("FearLess Cape 8","assets/minecraft/Insane/cape/cape8.png")
+    val FLess_CAPE_9=loadCapeFromResource("FearLess Cape 9","assets/minecraft/Insane/cape/cape9.png")
+    val FLess_CAPE_10=loadCapeFromResource("FearLess Cape 10","assets/minecraft/Insane/cape/cape10.png")
+    var nowCape:Cape?=FLess_CAPE_1
     val capeList=mutableListOf<Cape>()
 
     init {
-        capeList.add(FDP_CAPE_1)
-        capeList.add(FDP_CAPE_2)
-        capeList.add(FDP_CAPE_3)
-        capeList.add(FDP_CAPE_4)
-        capeList.add(FDP_CAPE_5)
-        capeList.add(FDP_CAPE_6)
-        capeList.add(FDP_CAPE_7)
-        capeList.add(FDP_CAPE_8)
-        capeList.add(FDP_CAPE_9)
-        capeList.add(FDP_CAPE_10)
+        capeList.add(FLess_CAPE_4)
+        capeList.add(FLess_CAPE_5)
+        capeList.add(FLess_CAPE_6)
+        capeList.add(FLess_CAPE_7)
+        capeList.add(FLess_CAPE_8)
+        capeList.add(FLess_CAPE_9)
+        capeList.add(FLess_CAPE_10)
     }
 
     fun load(){
         capeList.clear()
 
         // add default capes
-        capeList.add(FDP_CAPE_1)
-        capeList.add(FDP_CAPE_2)
-        capeList.add(FDP_CAPE_3)
-        capeList.add(FDP_CAPE_4)
-        capeList.add(FDP_CAPE_5)
-        capeList.add(FDP_CAPE_6)
-        capeList.add(FDP_CAPE_7)
-        capeList.add(FDP_CAPE_8)
-        capeList.add(FDP_CAPE_9)
-        capeList.add(FDP_CAPE_10)
+        capeList.add(FLess_CAPE_4)
+        capeList.add(FLess_CAPE_5)
+        capeList.add(FLess_CAPE_6)
+        capeList.add(FLess_CAPE_7)
+        capeList.add(FLess_CAPE_8)
+        capeList.add(FLess_CAPE_9)
+        capeList.add(FLess_CAPE_10)
         // add capes from files
         for(file in LiquidBounce.fileManager.capesDir.listFiles()){
             if(file.isFile&&!file.name.equals(jsonFile.name)){
