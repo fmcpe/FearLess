@@ -83,8 +83,8 @@ public abstract class MixinSplashProgressRunnable {
             // SoundFx.playSound(SoundFxPlayer.SoundType.SPECIAL, -8f);
             float rectX = width * 0.15f;
             float rectX2 = width * 0.75f;
-            float rectY = height * 0.75f;
-            float rectY2 = height * 0.8f;
+            float rectY = height * 0.72f;
+            float rectY2 = height * 0.78f;
             float rectRadius = height * 0.025f;
             float progress = (float) animatedValue.sync(getProgress());
 
