@@ -80,9 +80,9 @@ public abstract class MixinSplashProgressRunnable {
             GL11.glDisable(GL11.GL_TEXTURE_2D);
 
             // draw progress bar
-            SoundFx.playSound(SoundFxPlayer.SoundType.SPECIAL, -8f);
-            float rectX = width * 0.18f;
-            float rectX2 = width * 0.78f;
+            // SoundFx.playSound(SoundFxPlayer.SoundType.SPECIAL, -8f);
+            float rectX = width * 0.15f;
+            float rectX2 = width * 0.75f;
             float rectY = height * 0.75f;
             float rectY2 = height * 0.8f;
             float rectRadius = height * 0.025f;

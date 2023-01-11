@@ -142,7 +142,6 @@ object LiquidBounce {
 
         // Disable optifine fastrender
         ClientUtils.disableFastRender()
-        SoundFxPlayer().playSound(SoundFxPlayer.SoundType.SPECIAL, -8f)
 
         // Set is starting status
         isStarting = false
