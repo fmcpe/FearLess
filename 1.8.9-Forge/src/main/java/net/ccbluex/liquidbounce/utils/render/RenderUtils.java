@@ -1015,13 +1015,10 @@ public final class RenderUtils extends MinecraftInstance {
         glDisable(GL_TEXTURE_2D);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glEnable(GL_LINE_SMOOTH);
-        glPushMatrix();
-        glLineWidth(1F);
         glBegin(GL_POLYGON);
         for(int i = 0; i <= 360; i++)
             glVertex2d(x + Math.sin(i * Math.PI / 180.0D) * radius, y + Math.cos(i * Math.PI / 180.0D) * radius);
         glEnd();
-        glPopMatrix();
         glEnable(GL_TEXTURE_2D);
         glDisable(GL_LINE_SMOOTH);
         glColor4f(1F, 1F, 1F, 1F);

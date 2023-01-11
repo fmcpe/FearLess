@@ -28,6 +28,9 @@ public final class ClientUtils extends MinecraftInstance {
     public static void logError(String msg){
         logger.error(msg);
     }
+    public static void logInfo(String msg){
+        logger.error(msg);
+    }
 
     private static Field fastRenderField;
 

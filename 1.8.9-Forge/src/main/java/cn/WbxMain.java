@@ -15,7 +15,7 @@ public class WbxMain {
     private final SideGui sideGui = new SideGui();
     private static WbxMain INSTANCE;
     public static boolean got = false;
-    public  SideGui getSideGui() {
+    public SideGui getSideGui() {
         return sideGui;
     }
     public static WbxMain getInstance() {
