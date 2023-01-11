@@ -69,8 +69,8 @@ public class HUD extends Module {
     private int startTime;
     public final BoolValue logo = new BoolValue("Logo", true);
     public final BoolValue test1 = new BoolValue("BMCTest", false);
-    public final TextValue clientname =  new TextValue("ClientName", "Noteless");
-    public final TextValue domainValue =  new TextValue("Scoreboard-Domain", "One.Noteless");
+    public final TextValue clientname =  new TextValue("ClientName", "Fearless");
+    public final TextValue domainValue =  new TextValue("Scoreboard-Domain", "Fearless.one");
     public final BoolValue hotbar = new BoolValue("HUD_Hotbar", true);
     public final BoolValue WhiteInfo = new BoolValue("WhiteInfo", false);
     public final BoolValue paimon = new BoolValue("paimon", true);

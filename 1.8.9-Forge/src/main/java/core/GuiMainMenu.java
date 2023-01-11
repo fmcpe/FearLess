@@ -88,9 +88,9 @@ public class GuiMainMenu extends GuiScreen {
         }
 
        // Hanabi.INSTANCE.fontManager.icon130.drawString(HanabiFonts.ICON_HANABI_LOGO, (float)this.width / 2.0F - 50.0F * ((float)this.butt.size() / 2.0F) + 10.0F, (float)this.height / 2.0F + 5.0F, -13671171);
-        Fonts.SF.SF_25.SF_25.drawString("Noteless Client", (float)this.width / 2.0F - 50.0F * ((float)this.butt.size() / 2.0F) + 80.0F, (float)this.height / 2.0F - 30.0F, -1);
+        Fonts.SF.SF_25.SF_25.drawString("FearLess Client", (float)this.width / 2.0F - 50.0F * ((float)this.butt.size() / 2.0F) + 80.0F, (float)this.height / 2.0F - 30.0F, -1);
        Fonts.SF.SF_20.SF_20.drawString(WbxMain.version, (float)this.width / 2.0F - 50.0F * ((float)this.butt.size() / 2.0F) + 80.0F, (float)this.height / 2.0F - 10.0F, -1);
-        String s = "Logged in as " + "Insane1337";
+        String s = "Logged in as " + "fmcpe";
         Fonts.SF.SF_20.SF_20.drawString(s, (float)this.width / 2.0F + 50.0F * ((float)this.butt.size() / 2.0F) - (float) Fonts.SF.SF_20.SF_20.stringWidth(s) - 10.0F, (float)this.height / 2.0F + 5.0F, -1);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

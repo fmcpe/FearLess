@@ -98,7 +98,7 @@ class AutoL : Module() {
     fun sendInsultWords(msg: String, name: String) {
         var message = msg.replace("%name%", name)
         if (waterMarkValue.get()) {
-            message = "[Noteless] $message"
+            message = "[Fearless] $message"
         }
         mc.thePlayer.sendChatMessage(message)
     }

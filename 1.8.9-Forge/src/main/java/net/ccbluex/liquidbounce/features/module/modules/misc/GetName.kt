@@ -41,13 +41,13 @@ class GetName : Module() {
                     if (!playerName.contains(name)) {
                         playerName.add(name)
                         friendsConfig.addFriend(name)
-                        ClientUtils.displayChatMessage("§7[§8§lNoteless§7]§fDeleted HYT Bot:$name")
+                        ClientUtils.displayChatMessage("§7[§8§lFearLess§7]§fDeleted HYT Bot:$name")
                         Thread {
                             try {
                                 Thread.sleep(6000)
                                 playerName.remove(name)
                                 friendsConfig.removeFriend(name)
-                                ClientUtils.displayChatMessage("§7[§8§lNoteless§7]§fDeleted HYT Bot:$name")
+                                ClientUtils.displayChatMessage("§7[§8§lFearLess§7]§fDeleted HYT Bot:$name")
                             } catch (ex: InterruptedException) {
                                 ex.printStackTrace()
                             }
@@ -61,13 +61,13 @@ class GetName : Module() {
                     if (!playerName.contains(name)) {
                         playerName.add(name)
                         friendsConfig.addFriend(name)
-                        ClientUtils.displayChatMessage("§7[§8§lNoteless§7]§fDeleted HYT Bot:$name")
+                        ClientUtils.displayChatMessage("§7[§8§lFearLess§7]§fDeleted HYT Bot:$name")
                         Thread {
                             try {
                                 Thread.sleep(6000)
                                 playerName.remove(name)
                                 friendsConfig.removeFriend(name)
-                                ClientUtils.displayChatMessage("§7[§8§lNoteless§7]§fDeleted HYT Bot:$name")
+                                ClientUtils.displayChatMessage("§7[§8§lFearLess§7]§fDeleted HYT Bot:$name")
                             } catch (ex: InterruptedException) {
                                 ex.printStackTrace()
                             }

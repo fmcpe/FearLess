@@ -121,14 +121,14 @@ class AutoPlay : Module() {
                 "huayutinggg" -> {
                     if (text.contains("      喜欢      一般      不喜欢", true)) {
                         LiquidBounce.hud.addNotification(Notification(name,"Game Over", NotifyType.INFO))
-                        mc.thePlayer.sendChatMessage("@[Noteless]GG")
+                        mc.thePlayer.sendChatMessage("@[FearLess]GG")
                     }
                 }
                 "hypixel" -> {
                     fun process(component: IChatComponent) {
                         val value = component.chatStyle.chatClickEvent?.value
                         if (value != null && value.startsWith("/play", true)) {
-                            mc.thePlayer.sendChatMessage("/ac [Noteless]GG Hacked By Dimples#1337")
+                            mc.thePlayer.sendChatMessage("/ac [FearLess]GG Hacked By FMCPE")
                             queueAutoPlay {
                                 mc.thePlayer.sendChatMessage(value)
                             }
