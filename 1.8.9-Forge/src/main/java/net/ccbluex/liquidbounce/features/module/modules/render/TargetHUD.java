@@ -165,7 +165,7 @@ public class TargetHUD extends Module {
                     // 受伤的红色效果
                     GL11.glColor4f(1f, 1 - hurtPercent, 1 - hurtPercent, 1f);
                     //	RenderUtils.quickDrawHead(((AbstractClientPlayer) target).getLocationSkin(), 0, 0, size, size)
-                    习玉米(((AbstractClientPlayer) target).getLocationSkin(), 0, 0, size, size);
+                    drawX(((AbstractClientPlayer) target).getLocationSkin(), 0, 0, size, size);
                     GL11.glPopMatrix();
                     GL11.glPopMatrix();
                     GlStateManager.resetColor();
@@ -395,12 +395,12 @@ public class TargetHUD extends Module {
                 drawRect(37, 21.5f, 26 + width - 2, 24.5f, reAlpha(FluxColor.BLACK.c, 0.6f));
                 drawRect(37, 21.5f, f3, 24.5f, 0xff4286f5);
 
-                习包子(1.5f, 1.5f, 26.5f, 26.5f, 0.5f, 0x00000000, Color.GREEN.getRGB());
+                writeAngle(1.5f, 1.5f, 26.5f, 26.5f, 0.5f, 0x00000000, Color.GREEN.getRGB());
                 GlStateManager.resetColor();
                 for (NetworkPlayerInfo info : GuiPlayerTabOverlay.field_175252_a.sortedCopy(mc.getNetHandler().getPlayerInfoMap())) {
                     if (mc.theWorld.getPlayerEntityByUUID(info.getGameProfile().getId()) == ent) {
                         mc.getTextureManager().bindTexture(info.getLocationSkin());
-                        革命暴乱(2f, 2f, 8.0f, 8.0f, 8, 8, 24, 24, 64.0f, 64.0f);
+                        writeB(2f, 2f, 8.0f, 8.0f, 8, 8, 24, 24, 64.0f, 64.0f);
                         GlStateManager.bindTexture(0);
                         break;
                     }
@@ -474,7 +474,7 @@ public class TargetHUD extends Module {
             // White rect around head.
             RenderUtils.rect(6, -2, 37, 37, new Color(205, 205, 205));
             // Draws head.
-            六四真相(7, -1, 3, 3, 3, 3, 35, 35, 24, 24, (AbstractClientPlayer) target);
+            writeHead(7, -1, 3, 3, 3, 3, 35, 35, 24, 24, (AbstractClientPlayer) target);
             // Draws armor.
             GlStateManager.scale(1.1, 1.1, 1.1);
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -482,7 +482,7 @@ public class TargetHUD extends Module {
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             // Draw targets armor the worst way possible.
-            if (target != null) 全境示威运动(24, 11); 权贵家族(44, 11); 胡耀邦逝世(64, 11); 打倒中共(84, 11);
+            if (target != null) cTarArm(24, 11); cArmorW(44, 11); cArmor(64, 11); CCPRERACH(84, 11);
             GlStateManager.disableAlpha();
             GlStateManager.disableBlend();
             GlStateManager.popMatrix();
@@ -545,7 +545,7 @@ public class TargetHUD extends Module {
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             // Draw targets armor and tools and weapons and shows the enchants.
-            if (target != null) 太子党关系网络(28, 20);
+            if (target != null) cTarArmItem(28, 20);
             GlStateManager.disableAlpha();
             GlStateManager.disableBlend();
             // Draws targets model.
@@ -557,7 +557,7 @@ public class TargetHUD extends Module {
         }
     }
 
-    private void 太子党关系网络(final int x, final int y) {
+    private void cTarArmItem(final int x, final int y) {
         final KillAura ka = (KillAura) LiquidBounce.moduleManager.getModule(KillAura.class);
         EntityLivingBase target = ka.getTarget();
         if (target == null || !(target instanceof EntityPlayer)) return;
@@ -598,14 +598,14 @@ public class TargetHUD extends Module {
         }
         GL11.glPopMatrix();
     }
-    public static void 六四真相(final double x, final double y, final float u, final float v, final int uWidth, final int vHeight, final int width, final int height, final float tileWidth, final float tileHeight, final AbstractClientPlayer target) {
+    public static void writeHead(final double x, final double y, final float u, final float v, final int uWidth, final int vHeight, final int width, final int height, final float tileWidth, final float tileHeight, final AbstractClientPlayer target) {
         final ResourceLocation skin = target.getLocationSkin();
         Minecraft.getMinecraft().getTextureManager().bindTexture(skin);
         GL11.glEnable(GL11.GL_BLEND);
         RenderUtils.drawScaledCustomSizeModalRect((int)x, (int)y, u, v, uWidth, vHeight, width, height, tileWidth, tileHeight);
         GL11.glDisable(GL11.GL_BLEND);
     }
-    public void 革命暴乱(float x, float y, float u, float v, float uWidth, float vHeight, float width, float height, float tileWidth, float tileHeight) {
+    public void writeB(float x, float y, float u, float v, float uWidth, float vHeight, float width, float height, float tileWidth, float tileHeight) {
         float f = 1.0F / tileWidth;
         float f1 = 1.0F / tileHeight;
         GL11.glColor4f(1, 1, 1, 1);
@@ -618,7 +618,7 @@ public class TargetHUD extends Module {
         bufferbuilder.pos((double) x, (double) y, 0.0D).tex((double) (u * f), (double) (v * f1)).endVertex();
         tessellator.draw();
     }
-    private void 全境示威运动(final int x, final int y) {
+    private void cTarArm(final int x, final int y) {
         final KillAura ka = (KillAura) LiquidBounce.moduleManager.getModule(KillAura.class);
         EntityLivingBase target = ka.getTarget();
         if (target == null || !(target instanceof EntityPlayer)) return;
@@ -652,7 +652,7 @@ public class TargetHUD extends Module {
         GL11.glPopMatrix();
     }
 
-    private void 权贵家族(final int x, final int y) {
+    private void cArmorW(final int x, final int y) {
         final KillAura ka = (KillAura) LiquidBounce.moduleManager.getModule(KillAura.class);
         EntityLivingBase target = ka.getTarget();
         if (target == null || !(target instanceof EntityPlayer)) return;
@@ -686,7 +686,7 @@ public class TargetHUD extends Module {
         GL11.glPopMatrix();
     }
 
-    private void 胡耀邦逝世(final int x, final int y) {
+    private void cArmor(final int x, final int y) {
         final KillAura ka = (KillAura) LiquidBounce.moduleManager.getModule(KillAura.class);
         EntityLivingBase target = ka.getTarget();
         if (target == null || !(target instanceof EntityPlayer)) return;
@@ -720,7 +720,7 @@ public class TargetHUD extends Module {
         GL11.glPopMatrix();
     }
 
-    private void 打倒中共(final int x, final int y) {
+    private void CCPRERACH(final int x, final int y) {
         final KillAura ka = (KillAura) LiquidBounce.moduleManager.getModule(KillAura.class);
         EntityLivingBase target = ka.getTarget();
         if (target == null || !(target instanceof EntityPlayer)) return;
@@ -753,7 +753,7 @@ public class TargetHUD extends Module {
         }
         GL11.glPopMatrix();
     }
-    public void 习包子(double x, double y, double x1, double y1, double width, int internalColor,
+    public void writeAngle(double x, double y, double x1, double y1, double width, int internalColor,
                                   int borderColor) {
         rectangle(x + width, y + width, x1 - width, y1 - width, internalColor);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -840,7 +840,7 @@ public class TargetHUD extends Module {
             glTranslated(-x, -y, 0);
         }
     }
-    public static void 习馒头(int x, int y, float u, float v, int uWidth, int vHeight, int width,
+    public static void XiMantou(int x, int y, float u, float v, int uWidth, int vHeight, int width,
                                                      int height, float tileWidth, float tileHeight) {
         float f = 1.0F / tileWidth;
         float f1 = 1.0F / tileHeight;
@@ -855,10 +855,10 @@ public class TargetHUD extends Module {
         tessellator.draw();
     }
 
-    public void 习玉米(ResourceLocation skin, int x, int y, int width, int height) {
+    public void drawX(ResourceLocation skin, int x, int y, int width, int height) {
         mc.getTextureManager().bindTexture(skin);
-        习馒头(x, y, 8F, 8F, 8, 8, width, height, 64F, 64F);
-        习馒头(x, y, 40F, 8F, 8, 8, width, height, 64F, 64F);
+        XiMantou(x, y, 8F, 8F, 8, 8, width, height, 64F, 64F);
+        XiMantou(x, y, 40F, 8F, 8, 8, width, height, 64F, 64F);
     }
 }
 

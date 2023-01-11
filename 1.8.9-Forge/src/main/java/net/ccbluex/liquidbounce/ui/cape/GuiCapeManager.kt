@@ -28,7 +28,7 @@ object GuiCapeManager : GuiScreen() {
     val FLess_CAPE_8=loadCapeFromResource("FearLess Cape 8","assets/minecraft/Insane/cape/cape8.png")
     val FLess_CAPE_9=loadCapeFromResource("FearLess Cape 9","assets/minecraft/Insane/cape/cape9.png")
     val FLess_CAPE_10=loadCapeFromResource("FearLess Cape 10","assets/minecraft/Insane/cape/cape10.png")
-    var nowCape:Cape?=FLess_CAPE_1
+    var nowCape:Cape?=FLess_CAPE_4
     val capeList=mutableListOf<Cape>()
 
     init {

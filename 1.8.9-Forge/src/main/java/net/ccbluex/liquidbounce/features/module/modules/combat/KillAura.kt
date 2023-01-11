@@ -399,10 +399,10 @@ class KillAura : Module() {
                         || packet is C08PacketPlayerBlockPlacement)
                 && verusAutoBlockValue.get())
             event.cancelEvent()
-        if (gcd && packet is C03PacketPlayer && target != null){
-            m = 0.005 * gcdvalue.get();
-            f = m * 0.6 + 0.2;
-            gcdvv = m * m * m * 1.2;
+        if (gcd.get() && packet is C03PacketPlayer && target != null){
+            val m = 0.005F * gcdvalue.get();
+            val f = m * 0.6F + 0.2F;
+            val gcdvv = m * m * m * 1.2F;
             packet.pitch -= packet.pitch % gcdvv;
             packet.yaw -= packet.yaw % gcdvv;
         }
@@ -890,7 +890,7 @@ class KillAura : Module() {
             "Quad" -> (diffAngle / 360.0).pow(2.0) * maxTurnSpeed.get() + (1 - (diffAngle / 360.0).pow(2.0)) * minTurnSpeed.get()
             "Sine" -> (-cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5) * maxTurnSpeed.get() + (cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5) * minTurnSpeed.get()
             //"QuadSine" -> Math.pow(-cos(diffAngle / 180 * Math.PI) * 0.5 + 0.5, 2.0) * maxTurnSpeedValue.get() + (1 - Math.pow(-cos(diffAngle / 180 * Math.PI) * 0.5 + 0.5, 2.0)) * minTurnSpeedValue.get()
-            "QuadSine" -> (-cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5).pow(2.0) * maxTurnSpeedValue.get() + (1 - (-cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5).pow(2.0)) * minTurnSpeedValue.get()
+            "QuadSine" -> (-cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5).pow(2.0) * maxTurnSpeed.get() + (1 - (-cos(diffAngle / 360 * Math.PI) * 0.5 + 0.5).pow(2.0)) * minTurnSpeed.get()
             else -> 360.0
         }
 
