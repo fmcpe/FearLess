@@ -38,12 +38,12 @@ import net.minecraftforge.fml.common.network.NetworkRegistry
 object LiquidBounce {
     lateinit var Users: String
     // Client information
-    //121132
+    //110214
 
-    const val CLIENT_NAME = "Noteless"
-    const val CLIENT_VERSION = "211221"
+    const val CLIENT_NAME = "Fearless"
+    const val CLIENT_VERSION = "110214 Dev"
     const val IN_DEV = false
-    const val CLIENT_CREATOR = "CCBlueX"
+    const val CLIENT_CREATOR = "FMCPE"
     const val MINECRAFT_VERSION = "1.8.9"
     const val CLIENT_CLOUD = "https://cloud.liquidbounce.net/LiquidBounce"
     val backGround = ResourceLocation("Insane/Background.png")

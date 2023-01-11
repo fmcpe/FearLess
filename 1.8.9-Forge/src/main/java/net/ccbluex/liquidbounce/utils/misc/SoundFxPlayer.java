@@ -27,7 +27,6 @@ public class SoundFxPlayer {
 
     public enum SoundType {
         EDITION("ingame.wav"),
-        VICTORY("victory.wav"),
         SPECIAL("spec.wav");
 
         final String name;
