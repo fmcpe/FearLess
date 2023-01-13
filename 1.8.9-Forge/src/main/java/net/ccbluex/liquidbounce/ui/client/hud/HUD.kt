@@ -35,7 +35,6 @@ open class HUD : MinecraftInstance() {
             Image::class.java,
             Hotbar::class.java,
             Model::class.java,
-            QQLogo::class.java,
             TabGUI::class.java,
             TargetHud::class.java,
             Text::class.java,

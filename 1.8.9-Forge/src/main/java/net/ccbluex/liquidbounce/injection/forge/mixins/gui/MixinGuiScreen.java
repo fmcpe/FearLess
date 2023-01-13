@@ -9,7 +9,6 @@ import cn.WbxMain;
 import net.ccbluex.liquidbounce.LiquidBounce;
 import net.ccbluex.liquidbounce.features.module.modules.render.HUD;
 import net.ccbluex.liquidbounce.ui.client.GuiBackground;
-import net.ccbluex.liquidbounce.utils.misc.QQUtils;
 import net.ccbluex.liquidbounce.utils.render.ParticleUtils;
 import net.ccbluex.liquidbounce.utils.render.RenderUtils;
 import net.ccbluex.liquidbounce.utils.render.shader.shaders.BackgroundShader;
@@ -104,15 +103,13 @@ public abstract class MixinGuiScreen {
             GlStateManager.disableFog();
             try {
                 if (!WbxMain.got) {
-                    mc.getTextureManager().loadTexture(
-                            new ResourceLocation("sb"),
-                            new DynamicTexture(ImageIO.read(new URL("https://api.ixiaowai.cn/gqapi/gqapi.php"))));
+                    mc.getTextureManager().loadTexture(new ResourceLocation("liquidbounce/background.png"), new DynamicTexture("liquidbounce/background.png"));
                     WbxMain.got = true;
                 }
             }catch(final Throwable throwable) {
 
             }
-            mc.getTextureManager().bindTexture(new ResourceLocation("sb"));
+            mc.getTextureManager().bindTexture(new ResourceLocation("liquidbounce/background.png"));
             GlStateManager.color(1F, 1F, 1F, 1F);
             Gui.drawScaledCustomSizeModalRect(0, 0, 0.0F, 0.0F, width, height, width, height, width, height);
 

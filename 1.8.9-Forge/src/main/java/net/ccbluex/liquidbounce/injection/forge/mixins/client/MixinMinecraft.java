@@ -19,7 +19,6 @@ import net.ccbluex.liquidbounce.features.module.modules.world.FastPlace;
 import core.GuiMainMenu;
 import net.ccbluex.liquidbounce.utils.CPSCounter;
 import net.ccbluex.liquidbounce.utils.RotationUtils;
-import net.ccbluex.liquidbounce.utils.misc.QQUtils;
 import net.ccbluex.liquidbounce.utils.render.IconUtils;
 import net.ccbluex.liquidbounce.utils.render.RenderUtils;
 import net.minecraft.block.material.Material;
@@ -103,7 +102,6 @@ public abstract class MixinMinecraft {
 
     @Inject(method = "run", at = @At("HEAD"))
     private void init(CallbackInfo callbackInfo) throws AWTException, IOException {
-        QQUtils.getQQ();
         if (displayWidth < 1067)
             displayWidth = 1067;
 
