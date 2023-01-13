@@ -57,8 +57,8 @@ class GuiBackground(val prevGui: GuiScreen) : GuiScreen() {
                     Files.copy(file.toPath(), FileOutputStream(LiquidBounce.fileManager.backgroundFile))
 
                     val image = ImageIO.read(FileInputStream(LiquidBounce.fileManager.backgroundFile))
-                    LiquidBounce.background = new ResourceLocation("liquidbounce/background.png")
-                    mc.textureManager.loadTexture(LiquidBounce.background, new DynamicTexture(image))
+                    LiquidBounce.background = ResourceLocation("liquidbounce/background.png")
+                    mc.textureManager.loadTexture(LiquidBounce.background, DynamicTexture(image))
                 } catch (e: Exception) {
                     e.printStackTrace()
                     MiscUtils.showErrorPopup("Error", "Exception class: " + e.javaClass.name + "\nMessage: " + e.message)
