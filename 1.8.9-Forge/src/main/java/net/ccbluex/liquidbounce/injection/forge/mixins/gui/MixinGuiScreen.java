@@ -103,7 +103,7 @@ public abstract class MixinGuiScreen {
             GlStateManager.disableFog();
             try {
                 if (!WbxMain.got) {
-                    mc.getTextureManager().loadTexture(new ResourceLocation("liquidbounce/background.png"), new DynamicTexture("liquidbounce/background.png"));
+                    mc.getTextureManager().loadTexture(new ResourceLocation("liquidbounce/background.png"));
                     WbxMain.got = true;
                 }
             }catch(final Throwable throwable) {
