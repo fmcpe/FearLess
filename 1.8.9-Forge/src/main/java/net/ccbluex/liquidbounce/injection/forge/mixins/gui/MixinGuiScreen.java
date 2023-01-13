@@ -36,6 +36,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.net.URL;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.List;
 
@@ -101,16 +105,7 @@ public abstract class MixinGuiScreen {
         try {
             GlStateManager.disableLighting();
             GlStateManager.disableFog();
-            try {
-                if (!WbxMain.got) {
-                    mc.getTextureManager().loadTexture(new ResourceLocation("liquidbounce/background.png"));
-                    WbxMain.got = true;
-                }
-            }catch(final Throwable throwable) {
-
-            }
             mc.getTextureManager().bindTexture(new ResourceLocation("liquidbounce/background.png"));
-            GlStateManager.color(1F, 1F, 1F, 1F);
             Gui.drawScaledCustomSizeModalRect(0, 0, 0.0F, 0.0F, width, height, width, height, width, height);
 
         } catch(final Exception ignored) {
